@@ -9,4 +9,7 @@ class PostsRepository {
 
     suspend fun getPostsNumber(number: Int): Response<PostItem> =
         RetrofitInstance.api.getPostsNumber(number)
+
+    suspend fun getCustomPosts(userId: Int, sort: String, order: String): Response<List<PostItem>> =
+        RetrofitInstance.api.getCustomPost(userId, sort, order)
 }

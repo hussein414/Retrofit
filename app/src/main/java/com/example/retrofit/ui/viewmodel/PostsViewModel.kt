@@ -11,6 +11,7 @@ import retrofit2.Response
 class PostsViewModel(private val repository: PostsRepository) : ViewModel() {
     val postResponse: MutableLiveData<Response<PostItem>> = MutableLiveData()
     val postNumberResponse: MutableLiveData<Response<PostItem>> = MutableLiveData()
+    val customPostResponse: MutableLiveData<Response<List<PostItem>>> = MutableLiveData()
     fun getPosts() {
         viewModelScope.launch {
             val response: Response<PostItem> = repository.getPosts()
@@ -22,6 +23,14 @@ class PostsViewModel(private val repository: PostsRepository) : ViewModel() {
         viewModelScope.launch {
             val response: Response<PostItem> = repository.getPostsNumber(number)
             postNumberResponse.value = response
+        }
+    }
+
+
+    fun getCustomPosts(userId: Int, sort: String, order: String) {
+        viewModelScope.launch {
+            val response = repository.getCustomPosts(userId, sort, order)
+            customPostResponse.value = response
         }
     }
 }
