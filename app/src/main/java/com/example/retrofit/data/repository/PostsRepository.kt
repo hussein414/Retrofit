@@ -6,4 +6,7 @@ import retrofit2.Response
 
 class PostsRepository {
     suspend fun getPosts(): Response<PostItem> = RetrofitInstance.api.getPosts()
+
+    suspend fun getPostsNumber(number: Int): Response<PostItem> =
+        RetrofitInstance.api.getPostsNumber(number)
 }
