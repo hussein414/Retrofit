@@ -12,4 +12,7 @@ class PostsRepository {
 
     suspend fun getCustomPosts(userId: Int, sort: String, order: String): Response<List<PostItem>> =
         RetrofitInstance.api.getCustomPost(userId, sort, order)
+
+    suspend fun setPosts(postItem: PostItem): Response<PostItem> =
+        RetrofitInstance.api.pushPosts(postItem)
 }

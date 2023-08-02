@@ -33,4 +33,12 @@ class PostsViewModel(private val repository: PostsRepository) : ViewModel() {
             customPostResponse.value = response
         }
     }
+
+
+    fun setPosts(postItem: PostItem) {
+        viewModelScope.launch {
+            val response: Response<PostItem> = repository.setPosts(postItem)
+            postResponse.value = response
+        }
+    }
 }
